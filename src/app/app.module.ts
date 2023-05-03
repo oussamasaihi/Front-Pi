@@ -41,7 +41,7 @@ export const appRouteList: Routes = [
   {
     path: 'addroom',
     component: AddRoomComponent
-},
+  },
   {
       path: '**',
       redirectTo: 'page1'
@@ -53,6 +53,14 @@ export const appRouteList: Routes = [
   {
     path : 'NewActivity',
     component: NewActivityComponent
+  },
+  {
+    path : 'review',
+    component: ReviewComponent
+  },
+  {
+    path : 'reclamation',
+    component: ReclamationComponent
   }
 ];
 
@@ -72,13 +80,14 @@ export const appRouteList: Routes = [
     ReclamationComponent,
     NewActivityComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRouteList),
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        RouterModule.forRoot(appRouteList),
+        ReactiveFormsModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
