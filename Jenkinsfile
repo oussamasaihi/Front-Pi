@@ -15,16 +15,14 @@ pipeline {
             }
         }
         
-        stage('Docker Build and Push') {
+        stage('Docker Build and Run') {
             steps {
                 script {
                     def appVersion = sh(script: 'cat package.json | jq -r .version', returnStdout: true).trim()
-                    def imageName = "oussama/angular-app:${appVersion}"
+                    def imageName = "angular-app:${appVersion}"
                     
                     docker.build(imageName, '.')
-                    
-                    // Push the Docker image to Docker Hub
-                    docker.image(imageName).push()
+                    docker.image(imageName).run('-p 80:80')
                 }
             }
         }
